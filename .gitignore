@@ -1,0 +1,7 @@
+.DS_Store
+obj/
+bin/
+.vs/
+.vscode/solution-explorer
+**/MSBuild_Logs/
+.vscode/.myRedis.redis

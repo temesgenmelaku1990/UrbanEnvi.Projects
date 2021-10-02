@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\UrbanEnvi.Infrastructure\UrbanEnvi.Infrastructure.csproj" />
+    <ProjectReference Include="..\UrbanEnvi.Projects.Contracts\UrbanEnvi.Projects.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
