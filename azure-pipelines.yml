@@ -54,7 +54,7 @@ steps:
     includeSourceTags: true
     includeLatestTag: true
     additionalImageTags: |
-      $(GitVersion.NuGetVersion)
+      $(GitVersion.SemVer)
   displayName: Docker Build
 - task: DotNetCoreCLI@2
   inputs:
@@ -72,5 +72,5 @@ steps:
     includeSourceTags: true
     includeLatestTag: true
     additionalImageTags: |
-      $(GitVersion.NuGetVersion)
+      $(GitVersion.SemVer)
   displayName: Docker Push
