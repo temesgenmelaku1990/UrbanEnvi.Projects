@@ -1,0 +1,76 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: 
+- develop
+
+pool: 
+  vmImage: ubuntu-latest
+
+variables:
+- group: docker
+- group: nuget
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: '6.0.x'
+    includePreviewVersions: true
+- task: UseDotNet@2
+  inputs:
+    version: '5.0.x'
+    packageType: runtime
+- task: gitversion/setup@0
+  displayName: Install GitVersion
+  inputs:
+    versionSpec: '5.x'
+- task: gitversion/execute@0
+  displayName: Determine Version
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: 'UrbanEnvi.Projects.sln'
+    feedsToUse: "config"
+    nugetConfigPath: "./NuGet.Config"
+  displayName: Dotnet Restore
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.Client.csproj;**/*.Contracts.csproj'
+    # includesymbols: true
+    # includesource: true
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'GitVersion.NuGetVersion'
+  displayName: NuGet Pack
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: '$(Docker.RegistryEndpoint)'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Build services'
+    arguments: '--build-arg FEED_ACCESSTOKEN=$(Docker.NuGetAccessToken)'
+    includeSourceTags: true
+    includeLatestTag: true
+    additionalImageTags: |
+      $(GitVersion.NuGetVersion)
+  displayName: Docker Build
+- task: DotNetCoreCLI@2
+  inputs:
+    command: "push"
+    packagesToPush: "$(Build.ArtifactStagingDirectory)/**/*.nupkg"
+    nuGetFeedType: "internal"
+    publishVstsFeed: "$(NuGet.Feed)"
+  displayName: NuGet Push
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: '$(Docker.RegistryEndpoint)'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Push services'
+    includeSourceTags: true
+    includeLatestTag: true
+    additionalImageTags: |
+      $(GitVersion.NuGetVersion)
+  displayName: Docker Push

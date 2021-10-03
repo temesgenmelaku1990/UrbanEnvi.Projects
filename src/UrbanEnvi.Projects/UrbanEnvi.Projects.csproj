@@ -5,10 +5,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="UrbanEnvi.Infrastructure" Version="$(CoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\UrbanEnvi.Infrastructure\UrbanEnvi.Infrastructure.csproj" />
     <ProjectReference Include="..\UrbanEnvi.Projects.Contracts\UrbanEnvi.Projects.Contracts.csproj" />
   </ItemGroup>
 

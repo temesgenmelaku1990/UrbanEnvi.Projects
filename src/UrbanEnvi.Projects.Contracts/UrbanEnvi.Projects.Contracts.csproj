@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\UrbanEnvi.Core\UrbanEnvi.Core.csproj" />
+    <PackageReference Include="UrbanEnvi.Core" Version="$(CoreVersion)" />
   </ItemGroup>
 
 </Project>
