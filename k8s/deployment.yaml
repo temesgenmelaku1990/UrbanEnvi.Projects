@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: projects
-        image: urbanenvi/projects
+        image: registry.dev.bootlux.com/urbanenvi/projects
         imagePullPolicy: Always
         env:
         - name: DOTNET_LOGGING__CONSOLE__DISABLECOLORS
