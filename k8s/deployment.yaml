@@ -2,15 +2,6 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: projects
-  annotations:
-    dapr.io/enabled: 'true'
-    dapr.io/app-id: 'projects'
-    dapr.io/app-port: '80'
-    dapr.io/config: 'appconfig'
-    dapr.io/log-level: 'debug'
-  labels:
-    app.kubernetes.io/name: 'projects'
-    app.kubernetes.io/part-of: 'UrbanEnvi'
 spec:
   replicas: 1
   selector:
@@ -24,6 +15,7 @@ spec:
         dapr.io/app-port: '80'
         dapr.io/config: 'appconfig'
         dapr.io/log-level: 'debug'
+        dapr.io/log-as-json: "true"
       labels:
         app.kubernetes.io/name: 'projects'
         app.kubernetes.io/part-of: 'UrbanEnvi'
