@@ -74,3 +74,5 @@ steps:
     additionalImageTags: |
       $(GitVersion.SemVer)
   displayName: Docker Push
+- publish: $(System.DefaultWorkingDirectory)/k8s
+  artifact: 'k8s'
