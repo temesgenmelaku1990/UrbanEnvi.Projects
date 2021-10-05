@@ -25,12 +25,6 @@ spec:
         image: registry.dev.bootlux.com/urbanenvi/projects
         imagePullPolicy: Always
         env:
-        - name: DOTNET_LOGGING__CONSOLE__DISABLECOLORS
-          value: 'true'
-        - name: ASPNETCORE_URLS
-          value: 'http://*'
-        - name: PORT
-          value: '80'
         - name: CONNECTIONSTRINGS__REDIS
           valueFrom:
             secretKeyRef:

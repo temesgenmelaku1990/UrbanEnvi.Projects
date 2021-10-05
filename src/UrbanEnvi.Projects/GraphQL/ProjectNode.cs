@@ -8,10 +8,7 @@ using UrbanEnvi.Features.Projects;
 namespace UrbanEnvi.GraphQL;
 
 [Node]
-[ExtendObjectType(typeof(Project), IgnoreProperties = new[] {
-    nameof(Entity.Inbox),
-    nameof(Entity.Outbox)
-})]
+[ExtendObjectType(typeof(Project))]
 public class ProjectNode
 {
     [BindMember(nameof(Project.ProjectCategory), Replace = true)]

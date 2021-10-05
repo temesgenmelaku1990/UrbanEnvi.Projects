@@ -6,10 +6,7 @@ using UrbanEnvi.Features.AssessmentTypes;
 namespace UrbanEnvi.GraphQL;
 
 [Node]
-[ExtendObjectType(typeof(AssessmentType), IgnoreProperties = new[] {
-    nameof(Entity.Inbox),
-    nameof(Entity.Outbox)
-})]
+[ExtendObjectType(typeof(AssessmentType))]
 public class AssessmentTypeNode
 {
     [NodeResolver]
