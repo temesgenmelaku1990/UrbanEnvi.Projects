@@ -39,8 +39,8 @@ stages:
       - job: Docker
         displayName: Build Docker image
         steps:
-          - template: pipelines/docker-build-push.yaml@templates
+          - template: pipelines/docker/publish.yaml@templates
       - job: Helm
         displayName: Publish Helm chart
         steps:
-          - template: pipelines/helm-publish.yaml@templates
+          - template: pipelines/helm/publish.yaml@templates
