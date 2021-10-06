@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using UrbanEnvi.Features.AssessmentTypes;
+using UrbanEnvi.Persistence.Comparers;
 
 namespace UrbanEnvi.Persistence.Configurations;
 

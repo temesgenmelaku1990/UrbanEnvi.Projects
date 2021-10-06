@@ -1,0 +1,3 @@
+[submodule "DevOps"]
+	path = DevOps
+	url = https://ymijorski@dev.azure.com/ymijorski/UrbanEnvi/_git/UrbanEnvi.DevOps

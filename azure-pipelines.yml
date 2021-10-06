@@ -1,0 +1,39 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: UrbanEnvi.DevOps
+
+trigger:
+  - develop
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - group: docker-dev
+  - group: nuget-dev
+
+stages:
+  - stage: Build
+    displayName: Build stage
+    jobs:
+      - job: NuGet
+        displayName: Build NuGet package
+        steps:
+          - template: pipelines/nuget-pack-push.yaml@templates
+            parameters:
+              solution: "UrbanEnvi.Projects.sln"
+      - job: Docker
+        displayName: Build Docker image
+        steps:
+          - template: pipelines/docker-build-push.yaml@templates
+      - job: Helm
+        displayName: Build Helm package
+        steps:
+          - template: pipelines/helm-package.yaml@templates

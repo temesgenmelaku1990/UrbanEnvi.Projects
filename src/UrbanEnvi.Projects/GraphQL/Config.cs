@@ -1,5 +1,4 @@
 using HotChocolate;
-using HotChocolate.Execution.Configuration;
 using HotChocolate.Types;
 using UrbanEnvi.DataLoaders;
 
@@ -22,6 +21,7 @@ public static class Config
             .AddNodaTime()
             .AddNodaTimeFiltering()
             .AddGlobalObjectIdentification()
+            .AddCoreTypes()
             .AddDataLoader<AssessmentTypeLoader>()
             .AddDataLoader<ProjectCategoryLoader>()
             .AddDataLoader<ProjectLoader>()

@@ -6,10 +6,7 @@ using UrbanEnvi.Features.ProjectCategories;
 namespace UrbanEnvi.GraphQL;
 
 [Node]
-[ExtendObjectType(typeof(ProjectCategory), IgnoreProperties = new[] {
-    nameof(Entity.Inbox),
-    nameof(Entity.Outbox)
-})]
+[ExtendObjectType(typeof(ProjectCategory))]
 public class ProjectCategoryNode
 {
     [NodeResolver]
