@@ -10,7 +10,13 @@ resources:
       name: UrbanEnvi.DevOps
 
 trigger:
-  - develop
+  branches:
+    include:
+      - main
+      - develop
+      - feature/*
+      - hotfix/*
+      - support/*
 
 pool:
   vmImage: ubuntu-latest
@@ -18,22 +24,23 @@ pool:
 variables:
   - group: docker-dev
   - group: nuget-dev
+  - group: helm-dev
 
 stages:
   - stage: Build
     displayName: Build stage
     jobs:
-      - job: NuGet
-        displayName: Build NuGet package
-        steps:
-          - template: pipelines/nuget-pack-push.yaml@templates
-            parameters:
-              solution: "UrbanEnvi.Projects.sln"
+      # - job: NuGet
+      #   displayName: Build NuGet package
+      #   steps:
+      #     - template: pipelines/nuget-pack-push.yaml@templates
+      #       parameters:
+      #         solution: "UrbanEnvi.Addresses.sln"
       - job: Docker
         displayName: Build Docker image
         steps:
           - template: pipelines/docker-build-push.yaml@templates
       - job: Helm
-        displayName: Build Helm package
+        displayName: Publish Helm chart
         steps:
-          - template: pipelines/helm-package.yaml@templates
+          - template: pipelines/helm-publish.yaml@templates
