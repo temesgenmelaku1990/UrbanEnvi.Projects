@@ -27,19 +27,26 @@ variables:
   - group: helm-dev
 
 stages:
-  - stage: Build
-    displayName: Build stage
+  # - stage: NuGet
+  #   displayName: Publish NuGet
+  #   jobs:
+  #     - job: NuGet
+  #       displayName: Build NuGet package
+  #       steps:
+  #         - template: pipelines/nuget/publish.yaml@templates
+  #           parameters:
+  #             solution: "UrbanEnvi.Addresses.sln"
+  - stage: Docker
+    displayName: Publish Docker
     jobs:
-      # - job: NuGet
-      #   displayName: Build NuGet package
-      #   steps:
-      #     - template: pipelines/nuget-pack-push.yaml@templates
-      #       parameters:
-      #         solution: "UrbanEnvi.Addresses.sln"
       - job: Docker
         displayName: Build Docker image
         steps:
           - template: pipelines/docker/publish.yaml@templates
+  - stage: Helm
+    dependsOn: Docker
+    displayName: Publish Helm
+    jobs:
       - job: Helm
         displayName: Publish Helm chart
         steps:
