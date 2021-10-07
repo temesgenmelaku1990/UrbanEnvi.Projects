@@ -24,30 +24,12 @@ pool:
 variables:
   - group: docker-dev
   - group: nuget-dev
-  - group: helm-dev
 
 stages:
-  # - stage: NuGet
-  #   displayName: Publish NuGet
-  #   jobs:
-  #     - job: NuGet
-  #       displayName: Build NuGet package
-  #       steps:
-  #         - template: pipelines/nuget/publish.yaml@templates
-  #           parameters:
-  #             solution: "UrbanEnvi.Addresses.sln"
-  - stage: Docker
-    displayName: Publish Docker
+  - stage: Build
+    displayName: Build
     jobs:
       - job: Docker
         displayName: Build Docker image
         steps:
           - template: pipelines/docker/publish.yaml@templates
-  - stage: Helm
-    dependsOn: Docker
-    displayName: Publish Helm
-    jobs:
-      - job: Helm
-        displayName: Publish Helm chart
-        steps:
-          - template: pipelines/helm/publish.yaml@templates
