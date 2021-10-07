@@ -1,12 +1,3 @@
 {{- include "k8s.deployment" (list . "projects.deployment") -}}
 {{- define "projects.deployment" -}}
-spec:
-  selector:
-    matchLabels:
-      app: projects
-  template:
-    metadata:
-      annotations:
-        dapr.io/app-id: "projects"
-        dapr.io/app-port: {{ .Values.service.port | quote }}
 {{- end -}}
