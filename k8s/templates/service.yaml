@@ -1,0 +1,9 @@
+{{- include "k8s.service" (list . "projects.service") -}}
+{{- define "projects.service" -}}
+metadata:
+  labels:
+    app: projects
+spec:
+  selector:
+    app: projects
+{{- end -}}

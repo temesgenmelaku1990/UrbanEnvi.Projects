@@ -1,0 +1,6 @@
+{{- if .Values.ingress.enabled }}
+{{- include "k8s.ingress" (list . "projects.ingress") -}}
+{{- end -}}
+
+{{- define "projects.ingress" -}}
+{{- end -}}

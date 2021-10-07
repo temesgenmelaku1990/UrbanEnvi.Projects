@@ -1,0 +1,5 @@
+{{- if .Values.autoscaling.enabled }}
+{{- include "k8s.hpa" (list . "projects.hpa") -}}
+{{- end -}}
+{{- define "projects.hpa" -}}
+{{- end -}}
