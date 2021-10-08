@@ -8,8 +8,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-cbl-mariner1.0 AS build
 
 ARG FEED_ACCESSTOKEN
 
-# ENV VSS_NUGET_EXTERNAL_FEED_ENDPOINTS '{"endpointCredentials":[{"endpoint":"https://pkgs.dev.azure.com/ymijorski/UrbanEnvi/_packaging/dev/nuget/v3/index.json","username":"NoRealUserNameAsIsNotRequired","password":"'${FEED_ACCESSTOKEN}'"}]}'
-# RUN wget -O - https://raw.githubusercontent.com/Microsoft/artifacts-credprovider/master/helpers/installcredprovider.sh  | bash
+ENV VSS_NUGET_EXTERNAL_FEED_ENDPOINTS '{"endpointCredentials":[{"endpoint":"https://pkgs.dev.azure.com/ymijorski/UrbanEnvi/_packaging/urbanenvi/nuget/v3/index.json","username":"NoRealUserNameAsIsNotRequired","password":"'${FEED_ACCESSTOKEN}'"}]}'
+RUN wget -O - https://raw.githubusercontent.com/Microsoft/artifacts-credprovider/master/helpers/installcredprovider.sh  | bash
 
 WORKDIR /src
 COPY . .
