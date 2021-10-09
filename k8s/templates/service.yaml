@@ -1,3 +1,0 @@
-{{- include "k8s.service" (list . "projects.service") -}}
-{{- define "projects.service" -}}
-{{- end -}}
