@@ -9,4 +9,4 @@ services:
       context: .
       dockerfile: src/UrbanEnvi.Projects/Dockerfile
     ports:
-      - 80:80
+      - 8080:8080
