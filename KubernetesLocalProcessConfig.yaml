@@ -1,0 +1,6 @@
+version: 0.1
+env:
+  - name: CERTIFICATE__IDENTITY__CRT
+    value: $(volumeMounts:identity-tls-certs)/tls.crt
+  - name: CERTIFICATE__IDENTITY__KEY
+    value: $(volumeMounts:identity-tls-certs)/tls.key
