@@ -9,6 +9,7 @@ Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
+    .AddAuthorization()
     .AddAuthentication(options => options.DefaultScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
 
 builder.Services
