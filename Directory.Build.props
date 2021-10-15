@@ -20,12 +20,6 @@
 		</WeaverConfiguration>
 	</PropertyGroup>
 	<ItemGroup>
-		<Using Include="CSharpFunctionalExtensions" />
-		<Using Include="Mapster" />
-		<Using Include="MediatR" />
-		<PackageReference Include="GitVersion.MsBuild" Version="5.7.*">
-			<PrivateAssets>All</PrivateAssets>
-		</PackageReference>
 		<PackageReference Include="Fody" Version="6.5.*">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

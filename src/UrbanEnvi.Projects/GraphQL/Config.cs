@@ -37,7 +37,7 @@ public static class Config
             .AddTypeExtension<ProjectNode>()
             .InitializeOnStartup()
             .PublishSchemaDefinition(c => c
-                .SetName(WellKnownServices.Projects)
+                .SetName(WellKnownService.Projects.CamelizedName)
             // .AddTypeExtensionsFromFile("./Stitching.graphql")
             // .PublishToRedis(Constants.GraphQLSchema, sp => sp.GetRequiredService<ConnectionMultiplexer>())
             );

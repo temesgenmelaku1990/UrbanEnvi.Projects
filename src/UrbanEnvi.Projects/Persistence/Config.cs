@@ -7,7 +7,7 @@ public static class Config
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration) =>
         services.AddDefaultDbContext<ProjectsContext>(c => c
             .UseNpgsql(
-                configuration.GetConnectionString(WellKnownServices.Postgis),
+                configuration.GetConnectionString(WellKnownService.Postgis),
                 o => o
                     .UseNodaTime()
                     .UseNetTopologySuite()

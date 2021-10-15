@@ -15,10 +15,10 @@ builder.Services
     .AddOpenIddict()
     .AddValidation(options =>
     {
-        _ = options.SetIssuer(builder.Configuration.GetServiceUri(WellKnownServices.Identity))
-            .AddAudiences(WellKnownServices.Projects)
+        _ = options.SetIssuer(builder.Configuration.GetServiceUri(WellKnownService.Identity))
+            .AddAudiences(WellKnownService.Projects.DasherizedName)
             .AddEncryptionCertificate(
-                builder.Configuration.CertificateFromPem(WellKnownServices.Identity)
+                builder.Configuration.CertificateFromPem(WellKnownService.Identity)
             );
 
         _ = options.UseSystemNetHttp();
