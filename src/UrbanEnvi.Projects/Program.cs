@@ -19,7 +19,7 @@ builder.Services
         _ = options.SetIssuer(builder.Configuration.GetServiceUri(WellKnownService.Identity))
             .AddAudiences(WellKnownService.Projects.DasherizedName)
             .AddEncryptionCertificate(
-                builder.Configuration.CertificateFromPem(WellKnownService.Identity)
+                builder.Configuration.CertificateFromPem(WellKnownService.Core)
             );
 
         _ = options.UseSystemNetHttp();
