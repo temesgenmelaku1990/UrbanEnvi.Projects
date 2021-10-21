@@ -1,0 +1,25 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/*
+      - hotfix/*
+      - support/*
+  pull_request:
+    branches:
+      - main
+      - develop
+      - feature/*
+      - hotfix/*
+      - support/*
+
+jobs:
+  publish:
+    name: "Publish"
+    uses: urbanenvi/actions/.github/workflows/publish.yml@main
+    with:
+      docker: true

@@ -8,6 +8,7 @@
     <PackageReference Include="OpenIddict.Validation.AspNetCore" Version="3.1.*" />
     <PackageReference Include="OpenIddict.Validation.SystemNetHttp" Version="3.1.*" />
     <PackageReference Include="UrbanEnvi.Infrastructure" Version="$(CoreVersion)" />
+    <PackageReference Include="UrbanEnvi.EntityFrameworkCore.PostgreSql" Version="$(CoreVersion)" />
   </ItemGroup>
 
   <ItemGroup>

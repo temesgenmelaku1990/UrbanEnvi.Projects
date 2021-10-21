@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using UrbanEnvi.EntityFrameworkCore;
 using UrbanEnvi.Features.AssessmentTypes;
 using UrbanEnvi.Features.ProjectCategories;
 using UrbanEnvi.Features.Projects;

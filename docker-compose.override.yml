@@ -1,7 +1,0 @@
-version: "3.4"
-
-services:
-  urbanenvi.projects:
-    build:
-      args:
-        FEED_ACCESSTOKEN: ${FEED_ACCESSTOKEN}
