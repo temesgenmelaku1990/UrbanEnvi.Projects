@@ -3,7 +3,7 @@ variable "REGISTRY" {
 }
 
 variable "IMAGE_NAME" {
-  default = "product-catalog"
+  default = "projects"
 }
 
 variable "GITVERSION_SEMVER" {
